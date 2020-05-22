@@ -50,23 +50,35 @@ function App() {
   ] = useState(false);
 
   useEffect(() => {
-    // axios.get(`http://localhost:3100/api/auth/dashboard`).then(data => {
+    axios.get(`https://api-kenkoon.herokuapp.com/api/auth/dashboard`).then(data => {
 
-    //   console.log(data);
-    //   setAuth(true)
-    // }).catch((err) => {
-    //   console.log(err);
-    //   setAuth(false)
-    // })
-    GET("http://localhost:3100/api/auth/dashboard").then(data => {
       console.log(data);
-      if (data.data !== undefined) {
+      setAuth(true)
+    }).catch((err) => {
+      console.log(err);
+      // setAuth(false)
+      axios.get(`https://api-kenkoon.herokuapp.com/api/admin/user`).then(user => {
+        console.log(user);
+        user.data.result.map(uid => {
+          console.log(uid._id);
+          if (sessionStorage.getItem("login") === uid._id) {
+            setAuth(true)
+          } else {
+            setAuth(false)
+          }
 
-        setAuth(true)
-      } else {
-        setAuth(false)
-      }
+        })
+      })
     })
+    // GET("https://api-kenkoon.herokuapp.com/api/auth/dashboard").then(data => {
+    //   console.log(data);
+    //   if (data.data !== undefined) {
+
+    //     setAuth(true)
+    //   } else {
+    //     setAuth(false)
+    //   }
+    // })
   }, [])
 
   return (

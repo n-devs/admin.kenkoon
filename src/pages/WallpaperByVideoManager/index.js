@@ -6,7 +6,7 @@ import { useWallpaperByVideoManager } from '@kenkoon/controller';
 import axios from 'axios'
 
 export default function WallpaperManagerPage() {
-  const { table, setTable } = useWallpaperByVideoManager('http://localhost:3100/api/admin/components/wallpaper_by_video')
+  const { table, setTable } = useWallpaperByVideoManager('https://api-kenkoon.herokuapp.com/api/admin/components/wallpaper_by_video')
 
 
 
@@ -19,7 +19,7 @@ export default function WallpaperManagerPage() {
         editable={{
           onRowAdd: newData =>
             new Promise(resolve => {
-              axios.post('http://localhost:3100/api/admin/components/wallpaper_by_video/create', newData).then(check => {
+              axios.post('https://api-kenkoon.herokuapp.com/api/admin/components/wallpaper_by_video/create', newData).then(check => {
                 if (check) {
                   setTimeout(() => {
                     resolve();
@@ -38,7 +38,7 @@ export default function WallpaperManagerPage() {
             }),
           onRowUpdate: (newData, oldData) =>
             new Promise(resolve => {
-              axios.put(`http://localhost:3100/api/admin/components/wallpaper_by_video/update/${oldData._id}`, newData).then(check => {
+              axios.put(`https://api-kenkoon.herokuapp.com/api/admin/components/wallpaper_by_video/update/${oldData._id}`, newData).then(check => {
                 if (check) {
                   window.location.reload()
                   console.log(check);
@@ -59,7 +59,7 @@ export default function WallpaperManagerPage() {
           onRowDelete: oldData =>
             new Promise(resolve => {
 
-              axios.delete(`http://localhost:3100/api/admin/components/wallpaper_by_video/remove/${oldData._id}`, oldData).then(check => {
+              axios.delete(`https://api-kenkoon.herokuapp.com/api/admin/components/wallpaper_by_video/remove/${oldData._id}`, oldData).then(check => {
                 if (check) {
                   window.location.reload()
                   console.log(check);

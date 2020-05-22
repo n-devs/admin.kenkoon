@@ -6,7 +6,7 @@ import { useCollectionManager } from '@kenkoon/controller';
 import axios from 'axios'
 
 export default function CollectionManagerPage() {
-  const { table, setTable } = useCollectionManager('http://localhost:3100/api/admin/collection')
+  const { table, setTable } = useCollectionManager('https://api-kenkoon.herokuapp.com/api/admin/collection')
 
 
 
@@ -19,7 +19,7 @@ export default function CollectionManagerPage() {
         editable={{
           onRowAdd: newData =>
             new Promise(resolve => {
-              axios.post('http://localhost:3100/api/admin/collection/create', newData).then(check => {
+              axios.post('https://api-kenkoon.herokuapp.com/api/admin/collection/create', newData).then(check => {
                 if (check) {
                   window.location.reload()
                   console.log(check);
@@ -40,7 +40,7 @@ export default function CollectionManagerPage() {
             }),
           onRowUpdate: (newData, oldData) =>
             new Promise(resolve => {
-              axios.put(`http://localhost:3100/api/admin/collection/update/${oldData._id}`, newData).then(check => {
+              axios.put(`https://api-kenkoon.herokuapp.com/api/admin/collection/update/${oldData._id}`, newData).then(check => {
                 if (check) {
                   // window.location.reload()
                   console.log(check);
@@ -61,7 +61,7 @@ export default function CollectionManagerPage() {
           onRowDelete: oldData =>
             new Promise(resolve => {
 
-              axios.delete(`http://localhost:3100/api/admin/collection/remove/${oldData._id}`, oldData).then(check => {
+              axios.delete(`https://api-kenkoon.herokuapp.com/api/admin/collection/remove/${oldData._id}`, oldData).then(check => {
                 if (check) {
                   window.location.reload()
                   console.log(check);

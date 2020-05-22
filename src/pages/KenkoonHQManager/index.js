@@ -6,7 +6,7 @@ import { useKenkoonHQManager } from '@kenkoon/controller';
 import axios from 'axios'
 
 export default function KenkoonHQManagerPage() {
-  const { table, setTable } = useKenkoonHQManager('http://localhost:3100/api/admin/kenkoon_hq')
+  const { table, setTable } = useKenkoonHQManager('https://api-kenkoon.herokuapp.com/api/admin/kenkoon_hq')
 
 
 
@@ -19,7 +19,7 @@ export default function KenkoonHQManagerPage() {
         editable={{
           onRowAdd: newData =>
             new Promise(resolve => {
-              axios.post('http://localhost:3100/api/admin/kenkoon_hq/create', newData).then(check => {
+              axios.post('https://api-kenkoon.herokuapp.com/api/admin/kenkoon_hq/create', newData).then(check => {
                 if (check) {
                   // window.location.reload()
                   // console.log(check);
@@ -40,7 +40,7 @@ export default function KenkoonHQManagerPage() {
             }),
           onRowUpdate: (newData, oldData) =>
             new Promise(resolve => {
-              axios.put(`http://localhost:3100/api/admin/kenkoon_hq/update/${oldData._id}`, newData).then(check => {
+              axios.put(`https://api-kenkoon.herokuapp.com/api/admin/kenkoon_hq/update/${oldData._id}`, newData).then(check => {
                 if (check) {
                   // window.location.reload()
                   // console.log(check);
@@ -61,7 +61,7 @@ export default function KenkoonHQManagerPage() {
           onRowDelete: oldData =>
             new Promise(resolve => {
 
-              axios.delete(`http://localhost:3100/api/admin/kenkoon_hq/remove/${oldData._id}`, oldData).then(check => {
+              axios.delete(`https://api-kenkoon.herokuapp.com/api/admin/kenkoon_hq/remove/${oldData._id}`, oldData).then(check => {
                 if (check) {
                   // window.location.reload()
                   console.log(check);

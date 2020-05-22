@@ -6,7 +6,7 @@ import { useNewsletManager } from '@kenkoon/controller';
 import axios from 'axios'
 // import './css.css'
 export default function NewsletManagerPage() {
-  const { table, setTable } = useNewsletManager('http://localhost:3100/api/admin/newsletter')
+  const { table, setTable } = useNewsletManager('https://api-kenkoon.herokuapp.com/api/admin/newsletter')
 
 
 
@@ -19,7 +19,7 @@ export default function NewsletManagerPage() {
         editable={{
           // onRowAdd: newData =>
           //   new Promise(resolve => {
-          //     axios.post('http://localhost:3100/api/admin/order/create', newData).then(check => {
+          //     axios.post('https://api-kenkoon.herokuapp.com/api/admin/order/create', newData).then(check => {
           //       if (check) {
           //         window.location.reload()
           //         console.log(check);
@@ -40,7 +40,7 @@ export default function NewsletManagerPage() {
           //   }),
           // onRowUpdate: (newData, oldData) =>
           //   new Promise(resolve => {
-          //     axios.put(`http://localhost:3100/api/admin/order/update/${oldData._id}`, newData).then(check => {
+          //     axios.put(`https://api-kenkoon.herokuapp.com/api/admin/order/update/${oldData._id}`, newData).then(check => {
           //       if (check) {
           //         // window.location.reload()
           //         console.log(check);
@@ -61,7 +61,7 @@ export default function NewsletManagerPage() {
           // onRowDelete: oldData =>
           //   new Promise(resolve => {
 
-          //     axios.delete(`http://localhost:3100/api/admin/order/remove/${oldData._id}`, oldData).then(check => {
+          //     axios.delete(`https://api-kenkoon.herokuapp.com/api/admin/order/remove/${oldData._id}`, oldData).then(check => {
           //       if (check) {
           //         window.location.reload()
           //         console.log(check);

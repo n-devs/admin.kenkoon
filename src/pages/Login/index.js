@@ -20,14 +20,14 @@ import axios from 'axios'
 
 export default function LoginPage() {
     const classes = useStyles();
-    const { username, password, showPassword, textComponent, setUsername, setPassword, setShowPassword } = useLogin();
+    const { email, password, showPassword, textComponent, setEmail, setPassword, setShowPassword } = useLogin();
 
     const history = useHistory();
 
     const handleChange = prop => event => {
         switch (prop) {
-            case "username":
-                setUsername(event.target.value)
+            case "email":
+                setEmail(event.target.value)
                 break;
             case "password":
                 setPassword(event.target.value);
@@ -98,16 +98,16 @@ export default function LoginPage() {
                         <div className={classes.mainLoginContainer}>
                             <div>
                                 <FormControl className={clsx(classes.margin, classes.textField)}>
-                                    <InputLabel htmlFor="standard-adornment-username">{textComponent.labal.email.text}</InputLabel>
+                                    <InputLabel htmlFor="standard-adornment-email">{textComponent.labal.email.text}</InputLabel>
                                     <Input
-                                        id="standard-adornment-username"
+                                        id="standard-adornment-email"
                                         type="text"
-                                        value={username}
-                                        onChange={handleChange('username')}
+                                        value={email}
+                                        onChange={handleChange('email')}
                                         endAdornment={
                                             <InputAdornment position="end">
                                                 <IconButton
-                                                    aria-label="toggle username visibility"
+                                                    aria-label="toggle email visibility"
                                                 // onClick={handleClickShowUsername}
                                                 // onMouseDown={handleMouseDownUsername}
                                                 >
@@ -142,11 +142,12 @@ export default function LoginPage() {
                             </div>
                             <div>
                                 <Button onClick={() => {
-                                    axios.post('http://localhost:3100/api/auth/login', {
-                                        username: username,
+                                    axios.post('https://api-kenkoon.herokuapp.com/api/auth/login', {
+                                        email: email,
                                         password: password
                                     }).then(check => {
                                         if (check) {
+                                            sessionStorage.setItem("login", check.data.result._id);
                                             window.location.reload()
                                             // console.log(check);
 

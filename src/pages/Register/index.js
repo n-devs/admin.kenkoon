@@ -264,11 +264,12 @@ export default function RegisterPage() {
                                         if (lastName !== "") {
                                             if (email !== "") {
                                                 if (password === passwordConfirm) {
-                                                    axios.post('http://localhost:3100/api/auth/register', {
-                                                        name: `${firstName} ${lastName}`,
+                                                    axios.post('https://api-kenkoon.herokuapp.com/api/auth/register', {
+                                                        first_name: firstName,
+                                                        last_name: lastName,
                                                         email: email,
-                                                        username: email,
-                                                        password: password
+                                                        password: password,
+                                                        passwordConf: passwordConfirm
                                                     }).then(check => {
                                                         if (check) {
                                                             alert(`Finished account creation`)

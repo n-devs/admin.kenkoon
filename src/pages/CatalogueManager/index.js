@@ -6,7 +6,7 @@ import { useCatalogueManager } from '@kenkoon/controller';
 import axios from 'axios'
 
 export default function CatalogueManagerPage() {
-  const { table, setTable } = useCatalogueManager('http://localhost:3100/api/admin/catalogue')
+  const { table, setTable } = useCatalogueManager('https://api-kenkoon.herokuapp.com/api/admin/catalogue')
 
 
 
@@ -19,7 +19,7 @@ export default function CatalogueManagerPage() {
         editable={{
           onRowAdd: newData =>
             new Promise(resolve => {
-              axios.post('http://localhost:3100/api/admin/catalogue/create', newData).then(check => {
+              axios.post('https://api-kenkoon.herokuapp.com/api/admin/catalogue/create', newData).then(check => {
                 if (check) {
                   window.location.reload()
                   console.log(check);
@@ -40,7 +40,7 @@ export default function CatalogueManagerPage() {
             }),
           onRowUpdate: (newData, oldData) =>
             new Promise(resolve => {
-              axios.put(`http://localhost:3100/api/admin/catalogue/update/${oldData._id}`, newData).then(check => {
+              axios.put(`https://api-kenkoon.herokuapp.com/api/admin/catalogue/update/${oldData._id}`, newData).then(check => {
                 if (check) {
                   // window.location.reload()
                   console.log(check);
@@ -61,7 +61,7 @@ export default function CatalogueManagerPage() {
           onRowDelete: oldData =>
             new Promise(resolve => {
 
-              axios.delete(`http://localhost:3100/api/admin/catalogue/remove/${oldData._id}`, oldData).then(check => {
+              axios.delete(`https://api-kenkoon.herokuapp.com/api/admin/catalogue/remove/${oldData._id}`, oldData).then(check => {
                 if (check) {
                   window.location.reload()
                   console.log(check);

@@ -6,7 +6,7 @@ import { useOrderManager } from '@kenkoon/controller';
 import axios from 'axios'
 // import './css.css'
 export default function OrderManagerPage() {
-  const { table, setTable } = useOrderManager('http://localhost:3100/api/admin/order')
+  const { table, setTable } = useOrderManager('https://api-kenkoon.herokuapp.com/api/admin/order')
 
 
 
@@ -19,7 +19,7 @@ export default function OrderManagerPage() {
         editable={{
           // onRowAdd: newData =>
           //   new Promise(resolve => {
-          //     axios.post('http://localhost:3100/api/admin/order/create', newData).then(check => {
+          //     axios.post('https://api-kenkoon.herokuapp.com/api/admin/order/create', newData).then(check => {
           //       if (check) {
           //         window.location.reload()
           //         console.log(check);
@@ -40,7 +40,7 @@ export default function OrderManagerPage() {
           //   }),
           // onRowUpdate: (newData, oldData) =>
           //   new Promise(resolve => {
-          //     axios.put(`http://localhost:3100/api/admin/order/update/${oldData._id}`, newData).then(check => {
+          //     axios.put(`https://api-kenkoon.herokuapp.com/api/admin/order/update/${oldData._id}`, newData).then(check => {
           //       if (check) {
           //         // window.location.reload()
           //         console.log(check);
@@ -61,7 +61,7 @@ export default function OrderManagerPage() {
           // onRowDelete: oldData =>
           //   new Promise(resolve => {
 
-          //     axios.delete(`http://localhost:3100/api/admin/order/remove/${oldData._id}`, oldData).then(check => {
+          //     axios.delete(`https://api-kenkoon.herokuapp.com/api/admin/order/remove/${oldData._id}`, oldData).then(check => {
           //       if (check) {
           //         window.location.reload()
           //         console.log(check);

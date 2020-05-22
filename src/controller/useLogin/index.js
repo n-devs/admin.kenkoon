@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 export default function useLogin() {
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [textComponent] = useState({
@@ -29,6 +29,6 @@ export default function useLogin() {
         }
     });
 
-    return { username, password, showPassword, textComponent, setUsername, setPassword, setShowPassword }
+    return { email, password, showPassword, textComponent, setEmail, setPassword, setShowPassword }
 
 }

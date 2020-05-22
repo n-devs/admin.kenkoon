@@ -71,8 +71,10 @@ export default function DrawerLabel(props) {
                             width: 110
                         }}
                             onClick={() => {
-                                GET("http://localhost:3100/api/auth/logout").then(data => {
+                                GET("https://api-kenkoon.herokuapp.com/api/auth/logout").then(data => {
                                     console.log(data);
+                                    sessionStorage.removeItem("login");
+
                                     window.location.reload()
                                     // setAuth(true)
                                 })

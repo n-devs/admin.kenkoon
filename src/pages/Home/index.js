@@ -4,21 +4,21 @@ import socketIOClient from 'socket.io-client'
 
 export default function HomePage() {
     const [logData, setLogData] = useState(0)
-    const socket = socketIOClient("http://localhost:9000")
+    // const socket = socketIOClient("http://localhost:9000")
 
     useEffect(() => {
 
-        axios.get(`http://localhost:3100/api/status/log`).then(data => {
-            // setLogData(data.data.result.length)
+        axios.get(`https://api-kenkoon.herokuapp.com/api/status/log`).then(data => {
+            setLogData(data.data.result.length)
             console.log(data.data.result.length);
-            socket.emit('view', data.data.result.length)
+            // socket.emit('view', data.data.result.length)
         })
 
-        socket.on('view', (value) => {
-            setLogData(value)
-            console.log(value);
+        // socket.on('view', (value) => {
+        //     setLogData(value)
+        //     console.log(value);
 
-        })
+        // })
     }, [logData])
 
     return (

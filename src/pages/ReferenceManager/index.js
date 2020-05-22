@@ -6,7 +6,7 @@ import { useReferenceManager } from '@kenkoon/controller';
 import axios from 'axios'
 
 export default function ReferenceManagerPage() {
-  const { table, setTable } = useReferenceManager('http://localhost:3100/api/admin/reference')
+  const { table, setTable } = useReferenceManager('https://api-kenkoon.herokuapp.com/api/admin/reference')
 
 
 
@@ -19,7 +19,7 @@ export default function ReferenceManagerPage() {
         editable={{
           onRowAdd: newData =>
             new Promise(resolve => {
-              axios.post('http://localhost:3100/api/admin/reference/create', newData).then(check => {
+              axios.post('https://api-kenkoon.herokuapp.com/api/admin/reference/create', newData).then(check => {
                 if (check) {
                   window.location.reload()
                   console.log(check);
@@ -40,7 +40,7 @@ export default function ReferenceManagerPage() {
             }),
           onRowUpdate: (newData, oldData) =>
             new Promise(resolve => {
-              axios.put(`http://localhost:3100/api/admin/reference/update/${oldData._id}`, newData).then(check => {
+              axios.put(`https://api-kenkoon.herokuapp.com/api/admin/reference/update/${oldData._id}`, newData).then(check => {
                 if (check) {
                   window.location.reload()
                   console.log(check);
@@ -61,7 +61,7 @@ export default function ReferenceManagerPage() {
           onRowDelete: oldData =>
             new Promise(resolve => {
 
-              axios.delete(`http://localhost:3100/api/admin/reference/remove/${oldData._id}`, oldData).then(check => {
+              axios.delete(`https://api-kenkoon.herokuapp.com/api/admin/reference/remove/${oldData._id}`, oldData).then(check => {
                 if (check) {
                   window.location.reload()
                   console.log(check);

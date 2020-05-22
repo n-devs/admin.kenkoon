@@ -6,7 +6,7 @@ import { useJoinOurTeamManager } from '@kenkoon/controller';
 import axios from 'axios'
 
 export default function JoinOurTeamManager() {
-  const { table, setTable } = useJoinOurTeamManager('http://localhost:3100/api/admin/join_our_team')
+  const { table, setTable } = useJoinOurTeamManager('https://api-kenkoon.herokuapp.com/api/admin/join_our_team')
 
 
 
@@ -19,7 +19,7 @@ export default function JoinOurTeamManager() {
         editable={{
           onRowAdd: newData =>
             new Promise(resolve => {
-              axios.post('http://localhost:3100/api/admin/join_our_team/create', newData).then(check => {
+              axios.post('https://api-kenkoon.herokuapp.com/api/admin/join_our_team/create', newData).then(check => {
                 if (check) {
                   setTimeout(() => {
                     resolve();
@@ -38,7 +38,7 @@ export default function JoinOurTeamManager() {
             }),
           onRowUpdate: (newData, oldData) =>
             new Promise(resolve => {
-              axios.put(`http://localhost:3100/api/admin/join_our_team/update/${oldData._id}`, newData).then(check => {
+              axios.put(`https://api-kenkoon.herokuapp.com/api/admin/join_our_team/update/${oldData._id}`, newData).then(check => {
                 if (check) {
                   // window.location.reload()
                   // console.log(check);
@@ -59,7 +59,7 @@ export default function JoinOurTeamManager() {
           onRowDelete: oldData =>
             new Promise(resolve => {
 
-              axios.delete(`http://localhost:3100/api/admin/join_our_team/remove/${oldData._id}`, oldData).then(check => {
+              axios.delete(`https://api-kenkoon.herokuapp.com/api/admin/join_our_team/remove/${oldData._id}`, oldData).then(check => {
                 if (check) {
                   window.location.reload()
                   console.log(check);

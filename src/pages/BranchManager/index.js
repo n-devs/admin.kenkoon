@@ -6,7 +6,7 @@ import { useBranchManager } from '@kenkoon/controller';
 import axios from 'axios'
 
 export default function BranchManager() {
-  const { table, setTable } = useBranchManager('http://localhost:3100/api/admin/branch')
+  const { table, setTable } = useBranchManager('https://api-kenkoon.herokuapp.com/api/admin/branch')
 
 
 
@@ -19,7 +19,7 @@ export default function BranchManager() {
         editable={{
           onRowAdd: newData =>
             new Promise(resolve => {
-              axios.post('http://localhost:3100/api/admin/branch/create', newData).then(check => {
+              axios.post('https://api-kenkoon.herokuapp.com/api/admin/branch/create', newData).then(check => {
                 if (check) {
                   setTimeout(() => {
                     resolve();
@@ -38,7 +38,7 @@ export default function BranchManager() {
             }),
           onRowUpdate: (newData, oldData) =>
             new Promise(resolve => {
-              axios.put(`http://localhost:3100/api/admin/branch/update/${oldData._id}`, newData).then(check => {
+              axios.put(`https://api-kenkoon.herokuapp.com/api/admin/branch/update/${oldData._id}`, newData).then(check => {
                 if (check) {
                   // window.location.reload()
                   // console.log(check);
@@ -59,7 +59,7 @@ export default function BranchManager() {
           onRowDelete: oldData =>
             new Promise(resolve => {
 
-              axios.delete(`http://localhost:3100/api/admin/branch/remove/${oldData._id}`, oldData).then(check => {
+              axios.delete(`https://api-kenkoon.herokuapp.com/api/admin/branch/remove/${oldData._id}`, oldData).then(check => {
                 if (check) {
                   window.location.reload()
                   console.log(check);
